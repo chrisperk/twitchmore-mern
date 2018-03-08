@@ -11,7 +11,13 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+
+    streams: [
+        {
+            streamId: String
+        }
+    ]
 });
 
 module.exports = mongoose.model('User', userSchema);
