@@ -1,7 +1,8 @@
 import express from 'express';
+import envVars from './config';
 
 const app = express();
 
-const port = 3001;
+const port = envVars.PORT;
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));
