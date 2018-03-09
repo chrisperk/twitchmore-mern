@@ -4,7 +4,7 @@ import User from '../models/UserModel';
 import bcrypt from 'bcrypt';
 import passport from 'passport';
 import '../services/passport';
-import envVars from './config';
+import envVars from '../config';
 
 const router = express.Router();
 

@@ -20,6 +20,8 @@ const authStrategy = passport.authenticate('authStrategy', { session: false });
 app.use(bodyParser.json());
 app.use(AuthRouter);
 
+app.get('/api/secret', authStrategy, (req, res) => res.send(`The current user is ${req.user.username}`));
+
 const port = envVars.PORT;
 
 app.listen(port, () => console.log(`Listening on port: ${port}`));
