@@ -10,4 +10,4 @@ export const searchByStreamer = (cursorPosition, searchInput) => {
     get(`https://api.twitch.tv/kraken/search/channels?limit=10&offset=${cursorPosition}&query=${searchText}`, requestOptions)
         .then(res => res.json())
         .catch(err => console.log(`error: ${err}`));
-}
+};
