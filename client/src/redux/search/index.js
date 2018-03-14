@@ -1,16 +1,34 @@
 import { searchByGame, searchByStreamer } from '../../helpers/api/search';
 
 // Actions
+
 const CHANGE_SEARCH_TEXT = 'CHANGE_SEARCH_TEXT';
 const CHANGE_SEARCH_CRITERIA = 'CHANGE_SEARCH_CRITERIA';
-const GET_SEARCHRESULTS_START = 'GET_SEARCHRESULTS_START';
+const GET_SEARCHRESULTS_PENDING = 'GET_SEARCHRESULTS_PENDING';
 const GET_SEARCHRESULTS_SUCCESS = 'GET_SEARCHRESULTS_SUCCESS';
 const GET_SEARCHRESULTS_ERROR = 'GET_SEARCHRESULTS_ERROR';
 const HIDE_SEARCHRESULTS = 'HIDE_SEARCH_RESULTS';
 const GET_PREV_TEN = 'GET_PREV_TEN';
 const GET_NEXT_TEN = 'GET_NEXT_TEN';
 
+// Action Creators
+
+const changeSearchText = text => ({
+    type: CHANGE_SEARCH_TEXT,
+    payload: text
+});
+
+const changeSearchCriteria = critera => ({
+    type: CHANGE_SEARCH_CRITERIA,
+    payload: criteria
+});
+
+const getSearchResultsPending = () => ({
+    type: GET_SEARCHRESULTS_PENDING
+});
+
 // Reducer
+
 const initialState = {
     searchCriteria: 'streamer',
     isSearching: false,
@@ -38,7 +56,7 @@ const reducer = (state = initialState, action) => {
                 searchCriteria: action.payload
             };
 
-        case GET_SEARCHRESULTS_START:
+        case GET_SEARCHRESULTS_PENDING:
             return {
                 ...state,
                 isSearching: true
@@ -80,5 +98,7 @@ const reducer = (state = initialState, action) => {
 
         default:
             return state;
+
     }
+
 }
