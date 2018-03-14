@@ -10,10 +10,11 @@ const initialState = {
         isSearching: false,
         searchText: '',
         searchResults: [],
-        currentResultsPosition: 0,
+        cursorPosition: 0,
         totalResults: 0,
         showSearchResults: false,
-        error: false
+        error: false,
+        errorMessage: null
     },
     activeChannelsList: {
         items: [],
