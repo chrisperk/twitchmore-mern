@@ -9,7 +9,6 @@ const GET_SEARCHRESULTS_ERROR = 'GET_SEARCHRESULTS_ERROR';
 const HIDE_SEARCHRESULTS = 'HIDE_SEARCH_RESULTS';
 const GET_PREV_TEN = 'GET_PREV_TEN';
 const GET_NEXT_TEN = 'GET_NEXT_TEN';
-const SELECT_STREAM = 'SELECT_STREAM';
 
 // Reducer
 const initialState = {
@@ -18,7 +17,9 @@ const initialState = {
     searchText: '',
     searchResults: [],
     currentResultsPosition: 0,
-    totalResults: 0
+    totalResults: 0,
+    showSearchResults: false,
+    error: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,7 +49,36 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isSearching: false,
                 searchResults: action.payload,
-                totalResults: action.payload.length
+                totalResults: action.payload.length,
+                showSearchResults: true
+            };
+
+        case GET_SEARCHRESULTS_ERROR:
+            return {
+                ...state,
+                isSearching: false,
+                error: true
+            };
+
+        case HIDE_SEARCHRESULTS:
+            return {
+                ...state,
+                showSearchResults: false
+            };
+
+        case GET_PREV_TEN:
+            return {
+                ...state,
+                currentResultsPosition: action.currentResultsPosition - 10
+            }    
+
+        case GET_NEXT_TEN:
+            return {
+                ...state,
+                currentResultsPosition: action.currentResultsPosition + 10
             }
+
+        default:
+            return state;
     }
 }
