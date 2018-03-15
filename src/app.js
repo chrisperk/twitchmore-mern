@@ -24,7 +24,7 @@ app.use(AuthRouter);
 
 app.get('/api/secret', authStrategy, (req, res) => res.send(`The current user is ${req.user.username}`));
 
-app.get('*', (req, res) => res.sendFile('client/build/index.html'));
+app.get('*', (req, res) => res.sendFile('./client/build/index.html'));
 
 const port = envVars.PORT;
 

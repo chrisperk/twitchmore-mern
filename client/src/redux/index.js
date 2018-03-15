@@ -5,9 +5,8 @@ import search from './search';
 
 const initialState = {
     activeUser: '',
-    searchForm: {
-        searchCriteria: 'streamer',
-        placeholder: 'Enter streamer',
+    search: {
+        searchCriteria: 'game',
         isSearching: false,
         searchText: '',
         searchResults: [],
@@ -19,7 +18,7 @@ const initialState = {
     },
     activeChannelsList: {
         items: [],
-        activeAudioChannel: null
+        // activeAudioChannel: null
     }
 };
 

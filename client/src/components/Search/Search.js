@@ -5,7 +5,11 @@ const Search = props => {
     return (
         <form 
             onSubmit={
-                event => props.handleSearchSubmit(event, props.searchCriteria, props.searchText, 0)}>
+                event => {
+                    event.preventDefault();
+                    props.handleSearchSubmit(props.searchCriteria, props.cursorPosition, props.searchText);
+                }
+            }>
             <select
                 placeholder="Game"
                 value={props.searchCriteria}
@@ -31,7 +35,7 @@ Search.propTypes = {
     handleCriteriaChange: PropTypes.func.isRequired,
     handleTextChange: PropTypes.func.isRequired,
     handleSearchSubmit: PropTypes.func.isRequired,
-    currentResultsPosition: PropTypes.number,
+    cursorPosition: PropTypes.number,
     // handleRevealChannelsList: PropTypes.func,
     // hideChannelsList: PropTypes.bool,
     // activeChannels: PropTypes.array

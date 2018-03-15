@@ -7,7 +7,7 @@ const {
 export const get = (url, options) => 
     fetch(url, { ...options })
         .then(res => res.json())
-        .then(res => console.log(`success: ${res}`))
+        .then(res => console.dir(res))
         .catch(err => console.log(`error: ${err}`));
 
 export const post = (url, body, options) =>

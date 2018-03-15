@@ -43,9 +43,12 @@ const getSearchResultsError = error => ({
 
 export const fetchStreamsByGame = (cursorPosition, searchText) =>
     dispatch => {
-        dispatch(getSearchResultsPending())
+        dispatch(getSearchResultsPending());
         return searchByGame(cursorPosition, searchText)
-            .then(res => dispatch(getSearchResultsSuccess(res.data)))
+            .then(res => {
+                dispatch(getSearchResultsSuccess(res.data));
+                console.log(res.data);
+            })
             .catch(err => dispatch(getSearchResultsError(err)))
     };
 
@@ -108,7 +111,7 @@ export const fetchPrevSearchResults = (criteria, searchText, cursorPosition) =>
 // Reducer
 
 const initialState = {
-    searchCriteria: 'streamer',
+    searchCriteria: 'game',
     isSearching: false,
     searchText: '',
     searchResults: [],
