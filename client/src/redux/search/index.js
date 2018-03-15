@@ -13,12 +13,12 @@ const GET_NEXT_SEARCHRESULTS = 'GET_NEXT_SEARCHRESULTS';
 
 // Action Creators
 
-const changeSearchText = text => ({
+export const changeSearchText = text => ({
     type: CHANGE_SEARCH_TEXT,
     payload: text
 });
 
-const changeSearchCriteria = critera => ({
+export const changeSearchCriteria = (criteria) => ({
     type: CHANGE_SEARCH_CRITERIA,
     payload: criteria
 });

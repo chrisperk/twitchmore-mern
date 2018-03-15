@@ -17,10 +17,14 @@ const app = express();
 
 const authStrategy = passport.authenticate('authStrategy', { session: false });
 
+app.use(express.static('client/build'));
+
 app.use(bodyParser.json());
 app.use(AuthRouter);
 
 app.get('/api/secret', authStrategy, (req, res) => res.send(`The current user is ${req.user.username}`));
+
+app.get('*', (req, res) => res.sendFile('client/build/index.html'));
 
 const port = envVars.PORT;
 

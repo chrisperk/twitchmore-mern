@@ -1,5 +1,4 @@
 import fetchPonyfill from 'fetch-ponyfill';
-import envVars from '../../../src/config.js';
 
 const {
     fetch,
@@ -7,7 +6,7 @@ const {
 
 export const get = (url, options) => 
     fetch(url, { ...options })
-        .then(res = res.json())
+        .then(res => res.json())
         .then(res => console.log(`success: ${res}`))
         .catch(err => console.log(`error: ${err}`));
 
@@ -26,6 +25,6 @@ export const put = (url, body, options) =>
 export const requestOptions = {
     headers: {
         Accept: 'application/vnd.twitchtv.v5+json',
-        'Client-ID': envVars.REACT_APP_SECRET
+        'Client-ID': process.env.REACT_APP_SECRET
     }
 }
