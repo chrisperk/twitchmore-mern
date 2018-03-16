@@ -79,12 +79,12 @@ export const fetchNextSearchResults = (criteria, searchText, cursorPosition) =>
         switch (criteria) {
             case 'game':                
                 return searchByGame(newCursorPosition)
-                    .then(res => dispatch(getSearchResultsSuccess(res.data)))
+                    .then(res => dispatch(getSearchResultsSuccess(res)))
                     .catch(err => dispatch(getSearchResultsError(err)));
             
             case 'streamer':
                 return searchByStreamer(newCursorPosition)
-                    .then(res => dispatch(getSearchResultsSuccess(res.data)))
+                    .then(res => dispatch(getSearchResultsSuccess(res)))
                     .catch(err => dispatch(getSearchResultsError(err)));
         }
     }
