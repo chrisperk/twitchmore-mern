@@ -5,7 +5,7 @@ import {
     changeSearchCriteria,
     fetchStreamsByGame,
     fetchStreamsByStreamer,
-    // selectStream
+    selectStream
 } from '../../redux/search';
 
 const mapStateToProps = state => ({
@@ -33,12 +33,9 @@ const mapDispatchToProps = dispatch => ({
                 break;        
         }
     },
-    // handleSelectStream: stream => {
-    //     dispatch(selectStream(stream));
-    // },
-    // handleRevealChannelsList: () => {
-    //     dispatch(revealChannelsList());
-    // }
+    handleSelectStream: stream => {
+        dispatch(selectStream(stream));
+    }
 });
 
 export default connect(
