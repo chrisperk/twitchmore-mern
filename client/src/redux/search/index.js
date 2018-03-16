@@ -45,10 +45,7 @@ export const fetchStreamsByGame = (cursorPosition, searchText) =>
     dispatch => {
         dispatch(getSearchResultsPending());
         return searchByGame(cursorPosition, searchText)
-            .then(res => {
-                dispatch(getSearchResultsSuccess(res.data));
-                console.log(res.data);
-            })
+            .then(res => dispatch(getSearchResultsSuccess(res.streams)))
             .catch(err => dispatch(getSearchResultsError(err)))
     };
 
@@ -56,7 +53,7 @@ export const fetchStreamsByStreamer = (cursorPosition, searchText) =>
     dispatch => {
         dispatch(getSearchResultsPending());
         return searchByStreamer(cursorPosition, searchText)
-            .then(res => dispatch(getSearchResultsSuccess(res.data)))
+            .then(res => dispatch(getSearchResultsSuccess(res.streams)))
             .catch(err => dispatch(getSearchResultsError(err)));
     };
 
