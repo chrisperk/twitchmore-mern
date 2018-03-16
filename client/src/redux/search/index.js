@@ -33,7 +33,10 @@ const getSearchResultsPending = () => ({
 
 const getSearchResultsSuccess = results => ({
     type: GET_SEARCHRESULTS_SUCCESS,
-    payload: results
+    payload: {
+        streams: results.streams,
+        totalStreams: results._total
+    }
 });
 
 const getSearchResultsError = error => ({
@@ -45,7 +48,7 @@ export const fetchStreamsByGame = (cursorPosition, searchText) =>
     dispatch => {
         dispatch(getSearchResultsPending());
         return searchByGame(cursorPosition, searchText)
-            .then(res => dispatch(getSearchResultsSuccess(res.streams)))
+            .then(res => dispatch(getSearchResultsSuccess(res)))
             .catch(err => dispatch(getSearchResultsError(err)))
     };
 
@@ -53,7 +56,7 @@ export const fetchStreamsByStreamer = (cursorPosition, searchText) =>
     dispatch => {
         dispatch(getSearchResultsPending());
         return searchByStreamer(cursorPosition, searchText)
-            .then(res => dispatch(getSearchResultsSuccess(res.streams)))
+            .then(res => dispatch(getSearchResultsSuccess(res)))
             .catch(err => dispatch(getSearchResultsError(err)));
     };
 
@@ -145,8 +148,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isSearching: false,
-                searchResults: action.payload,
-                totalResults: action.payload.length,
+                searchResults: action.payload.streams,
+                totalResults: action.payload.totalStreams,
                 showSearchResults: true
             };
 
