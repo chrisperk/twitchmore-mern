@@ -32,6 +32,30 @@ const intialState = {
 const reducer = (state = initialState, action) => {
 
     switch (action.type) {
+
+        case SELECT_STREAM:
+            const newChannel = action.payload;
+            let duplicateCheck = false;
+
+            for (let i = 0; i < state.items.length; i++) {
+                if (state.items[i]._id === newChannel._id) {
+                    duplicateCheck = true;
+                }
+            }
+
+            if (!duplicateCheck) {
+                if (state.length < 4) {
+                    return {
+                        ...state,
+                        items: state.items.concat([newChannel])
+                    };
+                } else {
+                    return {
+                        ...state,
+                        items: state.items.filter(channel => state.items.indexOf(channel) !== 3).concat([newChannel])
+                    }
+                }
+            }
         
         case UNSELECT_CHANNEL:
             return {
