@@ -5,7 +5,8 @@ import {
     changeSearchCriteria,
     fetchStreamsByGame,
     fetchStreamsByStreamer,
-    selectChannel
+    selectChannel,
+    hideSearchResults
 } from '../../redux/search';
 
 const mapStateToProps = state => ({
@@ -35,6 +36,9 @@ const mapDispatchToProps = dispatch => ({
     },
     handleSelectChannel: channel => {
         dispatch(selectChannel(channel));
+    },
+    hideSearchResults: () => {
+        dispatch(hideSearchResults());
     }
 });
 

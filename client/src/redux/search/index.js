@@ -24,7 +24,7 @@ export const changeSearchCriteria = (criteria) => ({
     payload: criteria
 });
 
-const hideSearchResults = () => ({
+export const hideSearchResults = () => ({
     type: HIDE_SEARCHRESULTS
 });
 
@@ -87,6 +87,9 @@ export const fetchNextSearchResults = (criteria, searchText, cursorPosition) =>
                 return searchByStreamer(newCursorPosition)
                     .then(res => dispatch(getSearchResultsSuccess(res)))
                     .catch(err => dispatch(getSearchResultsError(err)));
+
+            default:
+                return;
         }
     }
 
@@ -106,6 +109,9 @@ export const fetchPrevSearchResults = (criteria, searchText, cursorPosition) =>
                 return searchByStreamer(newCursorPosition)
                     .then(res => dispatch(getSearchResultsSuccess(res)))
                     .catch(err => dispatch(getSearchResultsError(err)));
+
+            default:
+                return;
         }
     }
 
