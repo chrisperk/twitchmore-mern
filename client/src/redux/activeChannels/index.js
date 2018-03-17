@@ -39,11 +39,16 @@ const reducer = (state = initialState, action) => {
             const newChannel = action.payload;
             let duplicateCheck = false;
 
+            console.log(state.items);
+            console.log(newChannel);
+
             for (let i = 0; i < state.items.length; i++) {
                 if (state.items[i]._id === newChannel._id) {
                     duplicateCheck = true;
                 }
             }
+
+            console.log(duplicateCheck);
 
             if (!duplicateCheck) {
                 if (state.length < 4) {
@@ -58,6 +63,8 @@ const reducer = (state = initialState, action) => {
                     }
                 }
             }
+
+            return { ...state };
         
         case UNSELECT_CHANNEL:
             return {

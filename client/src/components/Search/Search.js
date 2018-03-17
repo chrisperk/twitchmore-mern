@@ -27,7 +27,7 @@ const Search = props => {
             </form>
             <ul style={{ display: props.searchResults.length > 0 ? 'block' : 'none' }}>
                 {props.searchResults.map(channel =>
-                    <li onClick={channel => props.handleSelectChannel(channel)}>  
+                    <li onClick={event => props.handleSelectChannel(channel, event)}>  
                         {props.searchCriteria === 'game' ? channel.channel.name : channel.name}
                     </li>
                 )}
