@@ -1,3 +1,5 @@
+import { SELECT_CHANNEL } from '../search';
+
 // Actions
 
 const UNSELECT_CHANNEL = "UNSELECT_CHANNEL";
@@ -6,25 +8,25 @@ const SHOW_CHANNELLIST = "SHOW_CHANNELLIST";
 
 // Action Creators
 
-export const unselectStream = (targetChannel, activeChannels) => ({
-    type: UNSELECT_STREAM,
+export const unselectChannel = (targetChannel, activeChannels) => ({
+    type: UNSELECT_CHANNEL,
     payload: {
         targetChannel: targetChannel,
         activeChannels: activeChannels
     }
 });
 
-export const HIDE_CHANNELLIST = () => ({
+export const hideChannelList = () => ({
     type: HIDE_CHANNELLIST
 });
 
-export const SHOW_CHANNELLIST = () => ({
+export const showChannelList = () => ({
     type: SHOW_CHANNELLIST
 });
 
 // Reducer
 
-const intialState = {
+const initialState = {
     items: [],
     isShown: false
 };
@@ -33,7 +35,7 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case SELECT_STREAM:
+        case SELECT_CHANNEL:
             const newChannel = action.payload;
             let duplicateCheck = false;
 

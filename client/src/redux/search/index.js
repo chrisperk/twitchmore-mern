@@ -10,7 +10,7 @@ const GET_SEARCHRESULTS_ERROR = 'GET_SEARCHRESULTS_ERROR';
 const HIDE_SEARCHRESULTS = 'HIDE_SEARCHRESULTS';
 const GET_PREV_SEARCHRESULTS = 'GET_PREV_SEARCHRESULTS';
 const GET_NEXT_SEARCHRESULTS = 'GET_NEXT_SEARCHRESULTS';
-const SELECT_STREAM = 'SELECT_STREAM';
+export const SELECT_CHANNEL = 'SELECT_CHANNEL';
 
 // Action Creators
 
@@ -109,8 +109,8 @@ export const fetchPrevSearchResults = (criteria, searchText, cursorPosition) =>
         }
     }
 
-export const selectStream = stream => ({
-    type: SELECT_STREAM,
+export const selectChannel = stream => ({
+    type: SELECT_CHANNEL,
     payload: stream
 });
 
