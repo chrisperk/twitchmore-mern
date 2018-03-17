@@ -35,7 +35,7 @@ const getSearchResultsPending = () => ({
 const getSearchResultsSuccess = results => ({
     type: GET_SEARCHRESULTS_SUCCESS,
     payload: {
-        streams: results.streams,
+        streams: results.streams || results.channels,
         totalStreams: results._total
     }
 });
@@ -99,12 +99,12 @@ export const fetchPrevSearchResults = (criteria, searchText, cursorPosition) =>
         switch (criteria) {
             case 'game':                
                 return searchByGame(newCursorPosition)
-                    .then(res => dispatch(getSearchResultsSuccess(res.data)))
+                    .then(res => dispatch(getSearchResultsSuccess(res)))
                     .catch(err => dispatch(getSearchResultsError(err)));
             
             case 'streamer':
                 return searchByStreamer(newCursorPosition)
-                    .then(res => dispatch(getSearchResultsSuccess(res.data)))
+                    .then(res => dispatch(getSearchResultsSuccess(res)))
                     .catch(err => dispatch(getSearchResultsError(err)));
         }
     }

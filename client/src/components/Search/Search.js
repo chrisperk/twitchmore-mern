@@ -21,13 +21,15 @@ const Search = props => {
                 <input 
                     type="text" 
                     value={props.searchText}
-                    placeholder={props.searchPlaceholder}
+                    placeholder={`Enter ${props.searchCriteria}...`}
                     onChange={event => props.handleTextChange(event.target.value)} />
                 <input type="submit" />
             </form>
             <ul style={{ display: props.searchResults.length > 0 ? 'block' : 'none' }}>
                 {props.searchResults.map(channel =>
-                    <li onClick={props.handleSelectChannel(channel)}>{channel.channel.name}</li>
+                    <li onClick={props.handleSelectChannel(channel)}>  
+                        {props.searchCriteria === 'game' ? channel.channel.name : channel.name}
+                    </li>
                 )}
             </ul>
         </div>
