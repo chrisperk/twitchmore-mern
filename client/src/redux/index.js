@@ -2,6 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import search from './search';
+import activeChannels from './activeChannels';
 
 const initialState = {
     activeUser: '',
@@ -42,7 +43,8 @@ const ui = (state = initialState, action) => {
 
 const reducer = combineReducers({
     ui,
-    search
+    search,
+    activeChannels
 });
   
 const store = createStore(
