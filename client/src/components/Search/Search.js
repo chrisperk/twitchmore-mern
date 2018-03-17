@@ -27,7 +27,7 @@ const Search = props => {
             </form>
             <ul style={{ display: props.searchResults.length > 0 ? 'block' : 'none' }}>
                 {props.searchResults.map(channel =>
-                    <li>{channel.channel.name}</li>
+                    <li onClick={props.handleSelectChannel(channel)}>{channel.channel.name}</li>
                 )}
             </ul>
         </div>
@@ -42,6 +42,7 @@ Search.propTypes = {
     handleCriteriaChange: PropTypes.func.isRequired,
     handleTextChange: PropTypes.func.isRequired,
     handleSearchSubmit: PropTypes.func.isRequired,
+    handleSelectChannel: PropTypes.func.isRequired,
     cursorPosition: PropTypes.number,
     // handleRevealChannelsList: PropTypes.func,
     // hideChannelsList: PropTypes.bool,
