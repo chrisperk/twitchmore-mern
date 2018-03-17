@@ -31,7 +31,9 @@ const mapDispatchToProps = dispatch => ({
                 break;
             case 'streamer':
                 dispatch(fetchStreamsByStreamer(cursorPosition, searchText));
-                break;        
+                break;
+            default:
+                return;        
         }
     },
     handleSelectChannel: channel => {

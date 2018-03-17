@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./client,./.babelrc,./package.json,./npm-debug.log,./yarn-lock,./README.md --copy-files",
-    "start": "export NODE_ENV=development && cd client && npm run build && cd .. && npm run build && node dist/src/app.js"
+    "start": "export NODE_ENV=development && cd client && npm run build && cd .. && npm run build && node dist/src/app.js",
+    "dev-start": "export NODE_ENV=development && npm run build && node dist/src/app.js"
   },
   "repository": {
     "type": "git",
