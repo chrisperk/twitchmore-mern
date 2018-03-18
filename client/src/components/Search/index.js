@@ -6,7 +6,8 @@ import {
     fetchStreamsByGame,
     fetchStreamsByStreamer,
     selectChannel,
-    hideSearchResults
+    hideSearchResults,
+    toggleSearchForm
 } from '../../redux/search';
 
 const mapStateToProps = state => ({
@@ -14,7 +15,9 @@ const mapStateToProps = state => ({
     searchPlaceholder: state.search.searchPlaceholder,
     searchCriteria: state.search.searchCriteria,
     searchResults: state.search.searchResults,
-    cursorPosition: state.search.cursorPosition
+    cursorPosition: state.search.cursorPosition,
+    showSearchForm: state.search.showSearchForm,
+    showSearchResults: state.search.showSearchResults
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,6 +44,9 @@ const mapDispatchToProps = dispatch => ({
     },
     hideSearchResults: () => {
         dispatch(hideSearchResults());
+    },
+    toggleSearchForm: () => {
+        dispatch(toggleSearchForm());
     }
 });
 

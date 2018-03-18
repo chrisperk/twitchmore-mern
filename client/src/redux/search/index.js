@@ -11,6 +11,7 @@ const HIDE_SEARCHRESULTS = 'HIDE_SEARCHRESULTS';
 const GET_PREV_SEARCHRESULTS = 'GET_PREV_SEARCHRESULTS';
 const GET_NEXT_SEARCHRESULTS = 'GET_NEXT_SEARCHRESULTS';
 export const SELECT_CHANNEL = 'SELECT_CHANNEL';
+const TOGGLE_SEARCHFORM = 'TOGGLE_SEARCHFORM';
 
 // Action Creators
 
@@ -120,6 +121,10 @@ export const selectChannel = stream => ({
     payload: stream
 });
 
+export const toggleSearchForm = () => ({
+    type: TOGGLE_SEARCHFORM
+});
+
 // Reducer
 
 const initialState = {
@@ -131,7 +136,8 @@ const initialState = {
     totalResults: 0,
     showSearchResults: false,
     error: false,
-    errorMessage: null
+    errorMessage: null,
+    showSearchForm: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -189,6 +195,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 cursorPosition: action.payload + 10
+            }
+
+        case TOGGLE_SEARCHFORM:
+            return {
+                ...state,
+                showSearchForm: !state.showSearchForm
             }
 
         default:
