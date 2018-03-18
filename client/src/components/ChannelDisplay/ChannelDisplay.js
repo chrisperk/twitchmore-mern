@@ -27,7 +27,8 @@ const ChannelDisplay = props => {
                             <i className="fa fa-times" />
                         </div>
                         <iframe
-                            src={`https://player.twitch.tv/?channel=${channel.channel.display_name}&muted=true&autoplay=true&playsinline=true`}
+                            src={`https://player.twitch.tv/?channel=${channel.channel ? channel.channel.display_name : channel.display_name}&muted=true&autoplay=true&playsinline=true`}
+                            title={channel.name}
                             height="100%"
                             width="100%"
                             frameBorder="0"
