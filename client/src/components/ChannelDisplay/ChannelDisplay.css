@@ -1,3 +1,29 @@
 #mobile-display-space {
     height: 100vh;
+    margin-top: -15px;
+}
+
+.channel-wrapper {
+    border: 1px solid #fff;
+}
+
+.close-channel-button {
+    position: relative;
+    top: 30px;
+    right: 10px;
+    z-index: 2;
+    float: right;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 0 5px;
+    border-radius: 3px;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.5s ease 0s;
+    -o-transition: opacity 0.5s ease 0s;
+    transition: opacity 0.5s ease 0s;
+}
+
+.close-channel-button:hover {
+    opacity: 1;
+    cursor: pointer;
 }

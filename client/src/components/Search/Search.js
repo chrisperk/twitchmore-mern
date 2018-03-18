@@ -10,12 +10,11 @@ const Search = props => {
                 <span 
                     className="menu-button"
                     onClick={() => props.toggleSearchForm()}>
-                    &#9776;
+                    <i class="fas fa-search"></i>
                 </span>
             </nav>
-            <div className="mobile-search-container">
+            <div className={props.showSearchForm ? "mobile-search-container visible" : "mobile-search-container" }>
                 <form 
-                    className={props.showSearchForm ? "mobile-search-form visible" : "mobile-search-form" }
                     onSubmit={
                         event => {
                             event.preventDefault();
@@ -36,15 +35,26 @@ const Search = props => {
                         onChange={event => props.handleTextChange(event.target.value)} />
                     <input type="submit" />
                 </form>
-                <ul style={{ display: props.searchResults.length > 0 ? 'block' : 'none' }}>
-                    {props.searchResults.map(channel =>
-                        <li 
-                            key={channel._id}
-                            onClick={event => props.handleSelectChannel(channel, event)}>  
-                            {props.searchCriteria === 'game' ? channel.channel.name : channel.name}
-                        </li>
-                    )}
-                </ul>
+                <div 
+                    className="results-wrapper"
+                    style={{ display: props.searchResults.length > 0 ? 'flex' : 'none' }}>
+                    <div className="results-scroll">
+                        <div>Prev</div>
+                        <div className="search-results">
+                            {props.searchResults.map(channel =>
+                                <div 
+                                    key={channel._id}
+                                    className="search-result"
+                                    onClick={event => props.handleSelectChannel(channel, event)}>  
+                                    <span>{props.searchCriteria === 'game' ? channel.channel.name : channel.name}</span>
+                                    <span>{channel.game}</span>
+                                </div>
+                            )}
+                        </div>
+                        <div>Next</div>
+                    </div>
+                    <div className="hide-results-button">Hide</div>
+                </div>
             </div>
         </header>
     );

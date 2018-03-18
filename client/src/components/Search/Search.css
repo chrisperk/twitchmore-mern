@@ -26,13 +26,36 @@
 
 .mobile-search-container {
     overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s;
 }
 
-.mobile-search-form {
-    transform: translateY(-100%);
-    transition: transform 0.2s;
+.mobile-search-container.visible {
+    max-height: 500px;
 }
 
-.visible {
-    transform: translateY(0);
+.results-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.results-scroll {
+    display: flex;
+    align-items: center;
+}
+
+.search-result {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.search-result > span {
+    display: block;
+}
+
+.hide-results-button {
+    
 }
