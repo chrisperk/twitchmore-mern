@@ -1,0 +1,24 @@
+// Actions
+
+const SHOW_LOGIN_MODAL = "SHOW_LOGIN_MODAL";
+const CHANGE_LOGIN_USERNAME = "CHANGE_LOGIN_USERNAME";
+const CHANGE_LOGIN_PASSWORD = "CHANGE_LOGIN_USERNAME";
+const SUBMIT_LOGIN_CREDENTIALS = "SUBMIT_LOGIN_CREDENTIALS";
+
+const SHOW_SIGNUP_MODAL = "SHOW_SIGNUP_MODAL";
+const CHANGE_SIGNUP_USERNAME = "CHANGE_SIGNUP_USERNAME";
+const CHANGE_SIGNUP_PASSWORD = "CHANGE_SIGNUP_PASSWORD";
+const SUBMIT_SIGNUP_CREDENTIALS = "CHANGE_SIGNUP_CREDENTIALS";
+
+// Action Creators
+
+export const changeLoginUsername = text => ({
+    type: CHANGE_LOGIN_USERNAME,
+    payload: text
+});
+
+export const changeLoginPassword = text => ({
+    type: CHANGE_LOGIN_PASSWORD,
+    payload: text
+});
+
