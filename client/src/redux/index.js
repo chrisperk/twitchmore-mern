@@ -5,7 +5,26 @@ import search from './search';
 import activeChannels from './activeChannels';
 
 const initialState = {
-    activeUser: '',
+    auth: {
+        activeUser: {
+            username: '',
+            token: ''
+        },
+        login: {
+            isShown: false,
+            username: '',
+            password: '',
+            isSubmitting: false,
+            error: null
+        },
+        signup: {
+            isShown: false,
+            username: '',
+            password: '',
+            isSubmitting: false,
+            error: null
+        }
+    },
     search: {
         searchCriteria: 'game',
         isSearching: false,
@@ -14,10 +33,9 @@ const initialState = {
         cursorPosition: 0,
         totalResults: 0,
         showSearchResults: false,
-        error: false,
-        errorMessage: null
+        error: null
     },
-    activeChannelsList: {
+    activeChannels: {
         items: [],
         // activeAudioChannel: null
     }
@@ -43,6 +61,7 @@ const ui = (state = initialState, action) => {
 
 const reducer = combineReducers({
     ui,
+    auth,
     search,
     activeChannels
 });

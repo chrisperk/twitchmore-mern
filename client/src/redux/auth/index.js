@@ -14,6 +14,8 @@ const CHANGE_SIGNUP_USERNAME = "CHANGE_SIGNUP_USERNAME";
 const CHANGE_SIGNUP_PASSWORD = "CHANGE_SIGNUP_PASSWORD";
 const SUBMIT_SIGNUP_CREDENTIALS = "CHANGE_SIGNUP_CREDENTIALS";
 
+const LOGOUT = "LOGOUT";
+
 // Action Creators
 
 export const toggleLoginModal = () => ({
@@ -44,7 +46,7 @@ export const submitLoginError = error => ({
     payload: error
 });
 
-export const submitLoginCredentials = requestOptions => 
+export const postLoginCredentials = requestOptions => 
     dispatch => {
         dispatch(submitLoginSuccess());
         return login(requestOptions)
@@ -80,7 +82,11 @@ export const submitSignupError = error => ({
     payload: error
 });
 
-export const submitSignupCredentials = requestOptions => 
+export const logout = () => ({
+    type: LOGOUT
+});
+
+export const postSignupCredentials = requestOptions => 
     dispatch => {
         dispatch(submitSignupSuccess());
         return signup(requestOptions)
@@ -88,3 +94,161 @@ export const submitSignupCredentials = requestOptions =>
             .catch(err => dispatch(submitSignupError(err)));
     };
 
+// Reducer
+
+const initialState = {
+    activeUser: {
+        username: '',
+        token: ''
+    },
+    login: {
+        isShown: false,
+        username: '',
+        password: '',
+        isSubmitting: false,
+        error: null
+    },
+    signup: {
+        isShown: false,
+        username: '',
+        password: '',
+        isSubmitting: false,
+        error: null
+    }
+};
+
+const reducer = (state = initialState, action) => {
+    
+    switch (action.type) {
+
+        case TOGGLE_LOGIN_MODAL:
+            return {
+                ...state,
+                login: {
+                    ...login,
+                    isShown: true
+                }
+            };
+
+        case CHANGE_LOGIN_USERNAME:
+            return {
+                ...state,
+                login: {
+                    ...login,
+                    username: action.payload
+                }
+            };
+        
+        case CHANGE_LOGIN_PASSWORD:
+            return {
+                ...state,
+                login: {
+                    ...login,
+                    password: action.payload
+                }
+            };
+
+        case SUBMIT_LOGIN_PENDING:
+            return {
+                ...state,
+                login: {
+                    ...login,
+                    isSubmitting: true,
+                    error: null
+                }
+            };
+
+        case SUBMIT_LOGIN_SUCCESS:
+            return {
+                ...state,
+                activeUser: {
+                    username: action.payload.username,
+                    token: action.payload.token
+                },
+                login: {
+                    ...login,
+                    isSubmitting: false
+                }
+            };
+
+        case SUBMIT_LOGIN_ERROR:
+            return {
+                ...state,
+                login: {
+                    ...login,
+                    isSubmitting: false,
+                    error: action.payload
+                }
+            };
+
+        case TOGGLE_SIGNUP_MODAL:
+            return {
+                ...state,
+                signup: {
+                    ...signup,
+                    isShown: true
+                }
+            };
+
+        case CHANGE_SIGNUP_USERNAME:
+            return {
+                ...state,
+                signup: {
+                    ...signup,
+                    username: action.payload
+                }
+            };
+        
+        case CHANGE_SIGNUP_PASSWORD:
+            return {
+                ...state,
+                signup: {
+                    ...signup,
+                    password: action.payload
+                }
+            };
+
+        case SUBMIT_SIGNUP_PENDING:
+            return {
+                ...state,
+                signup: {
+                    ...signup,
+                    isSubmitting: true,
+                    error: null
+                }
+            };
+
+        case SUBMIT_SIGNUP_SUCCESS:
+            return {
+                ...state,
+                signup: {
+                    ...signup,
+                    isSubmitting: false
+                }
+            };
+
+        case SUBMIT_SIGNUP_ERROR:
+            return {
+                ...state,
+                signup: {
+                    ...signup,
+                    isSubmitting: false,
+                    error: action.payload
+                }
+            };
+
+        case LOGOUT:
+            return {
+                ...state,
+                activeUser: {
+                    username: '',
+                    token: ''
+                }
+            };
+
+        default:
+            return state;
+
+    }
+
+}
