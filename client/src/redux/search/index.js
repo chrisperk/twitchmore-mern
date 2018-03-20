@@ -33,11 +33,11 @@ const getSearchResultsPending = () => ({
     type: GET_SEARCHRESULTS_PENDING
 });
 
-const getSearchResultsSuccess = results => ({
+const getSearchResultsSuccess = result => ({
     type: GET_SEARCHRESULTS_SUCCESS,
     payload: {
-        streams: results.streams || results.channels,
-        totalStreams: results._total
+        streams: result.streams || result.channels,
+        totalStreams: result._total
     }
 });
 
@@ -92,7 +92,7 @@ export const fetchNextSearchResults = (criteria, searchText, cursorPosition) =>
             default:
                 return;
         }
-    }
+    };
 
 export const fetchPrevSearchResults = (criteria, searchText, cursorPosition) =>
     dispatch => {
@@ -114,7 +114,7 @@ export const fetchPrevSearchResults = (criteria, searchText, cursorPosition) =>
             default:
                 return;
         }
-    }
+    };
 
 export const selectChannel = stream => ({
     type: SELECT_CHANNEL,
