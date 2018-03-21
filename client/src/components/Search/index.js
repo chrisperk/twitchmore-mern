@@ -9,6 +9,7 @@ import {
     hideSearchResults,
     toggleSearchForm
 } from '../../redux/search';
+import { toggleLoginModal } from '../../redux/auth';
 
 const mapStateToProps = state => ({
     searchText: state.search.searchText,
@@ -47,6 +48,9 @@ const mapDispatchToProps = dispatch => ({
     },
     toggleSearchForm: () => {
         dispatch(toggleSearchForm());
+    },
+    toggleLoginModal: () => {
+        dispatch(toggleLoginModal());
     }
 });
 

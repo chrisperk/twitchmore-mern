@@ -128,7 +128,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 login: {
                     ...login,
-                    isShown: true
+                    isShown: !state.login.isShown
                 }
             };
 
@@ -188,7 +188,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 signup: {
                     ...signup,
-                    isShown: true
+                    isShown: !state.signup.isShown
                 }
             };
 
