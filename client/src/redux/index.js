@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import search from './search';
 import activeChannels from './activeChannels';
+import auth from './auth';
 
 const initialState = {
     auth: {
