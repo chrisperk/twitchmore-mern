@@ -33,7 +33,7 @@ const Search = props => {
                             name="password"
                             placeholder="Password" 
                             value={props.passwordInput} 
-                            onChange={e => props.handleChangePassword(e)} />
+                            onChange={e => props.handleChangePassword(e.target.value)} />
                         <button 
                             type="submit"
                             className="submit-button">
