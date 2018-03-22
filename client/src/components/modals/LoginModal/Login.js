@@ -26,7 +26,7 @@ const Search = props => {
                             name="username"
                             placeholder="Username" 
                             value={props.usernameInput} 
-                            onChange={e => props.handleChangeUsername(e)} />
+                            onChange={e => props.handleChangeUsername(e.target.value)} />
                         <input 
                             type="password"
                             id="password"

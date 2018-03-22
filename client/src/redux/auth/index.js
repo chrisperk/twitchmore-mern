@@ -127,7 +127,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 login: {
-                    ...login,
+                    ...state.login,
                     isShown: !state.login.isShown
                 }
             };
@@ -136,7 +136,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 login: {
-                    ...login,
+                    ...state.login,
                     username: action.payload
                 }
             };
@@ -145,7 +145,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 login: {
-                    ...login,
+                    ...state.login,
                     password: action.payload
                 }
             };
@@ -154,7 +154,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 login: {
-                    ...login,
+                    ...state.login,
                     isSubmitting: true,
                     error: null
                 }
@@ -168,7 +168,7 @@ const reducer = (state = initialState, action) => {
                     token: action.payload.token
                 },
                 login: {
-                    ...login,
+                    ...state.login,
                     isSubmitting: false
                 }
             };
@@ -177,7 +177,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 login: {
-                    ...login,
+                    ...state.login,
                     isSubmitting: false,
                     error: action.payload
                 }
@@ -187,7 +187,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 signup: {
-                    ...signup,
+                    ...state.signup,
                     isShown: !state.signup.isShown
                 }
             };
@@ -196,7 +196,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 signup: {
-                    ...signup,
+                    ...state.signup,
                     username: action.payload
                 }
             };
@@ -205,7 +205,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 signup: {
-                    ...signup,
+                    ...state.signup,
                     password: action.payload
                 }
             };
@@ -214,7 +214,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 signup: {
-                    ...signup,
+                    ...state.signup,
                     isSubmitting: true,
                     error: null
                 }
@@ -224,7 +224,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 signup: {
-                    ...signup,
+                    ...state.signup,
                     isSubmitting: false
                 }
             };
