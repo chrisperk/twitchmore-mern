@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
 
-const Search = props => {
+const Login = props => {
     return (
         <div 
             className={props.isShown ? "modal-wrapper active" : "modal-wrapper"}
@@ -17,7 +17,7 @@ const Search = props => {
                 <h1>Login</h1>
                 {props.activeUsername ?
                     <div>
-                        Logged in as {props.activeUsername}&nbsp;
+                        You're logged in as {props.activeUsername}&nbsp;
                         <span
                             className="link-button"
                             onClick={() => props.handleLogout()}>
@@ -57,7 +57,7 @@ const Search = props => {
     );
 };
 
-Search.propTypes = {
+Login.propTypes = {
     isShown: PropTypes.bool.isRequired,
     usernameInput: PropTypes.string,
     usernamePassword: PropTypes.string,
@@ -71,4 +71,4 @@ Search.propTypes = {
     handleLogout: PropTypes.func
 };
 
-export default Search;
+export default Login;

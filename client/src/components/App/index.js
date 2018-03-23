@@ -3,6 +3,7 @@ import './App.css';
 import Search from '../Search';
 import ChannelDisplay from '../ChannelDisplay';
 import LoginModal from '../modals/LoginModal';
+import SignupModal from '../modals/SignupModal';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <Search />
         <ChannelDisplay />
         <LoginModal />
+        <SignupModal />
       </div>
     );
   }
