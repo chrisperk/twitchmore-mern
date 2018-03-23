@@ -4,7 +4,8 @@ import {
     toggleLoginModal,
     changeLoginUsername,
     changeLoginPassword,
-    postLoginCredentials
+    postLoginCredentials,
+    logout
 } from '../../../redux/auth';
 
 const mapStateToProps = state => ({
@@ -12,7 +13,8 @@ const mapStateToProps = state => ({
     usernameInput: state.auth.login.username,
     passwordInput: state.auth.login.password,
     isSubmitting: state.auth.login.isSubmitting,
-    error: state.auth.login.error
+    error: state.auth.login.error,
+    activeUsername: state.auth.activeUser.username
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -37,6 +39,9 @@ const mapDispatchToProps = dispatch => ({
     handlePostCredentials: (event, body) => {
         event.preventDefault();
         dispatch(postLoginCredentials(body));
+    },
+    handleLogout: () => {
+        dispatch(logout());
     }
 });
 

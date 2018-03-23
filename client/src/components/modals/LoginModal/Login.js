@@ -15,9 +15,14 @@ const Search = props => {
                     &times;
                 </span>
                 <h1>Login</h1>
-                {props.activeUser ?
+                {props.activeUsername ?
                     <div>
-                        Logged in as {props.activeUser}
+                        Logged in as {props.activeUsername}
+                        <span
+                            className="link-button"
+                            onClick={() => props.handleLogout()}>
+                            &nbsp;(Logout)
+                        </span>
                     </div> :
                     <form onSubmit={e => props.handlePostCredentials(
                         e,
@@ -58,10 +63,12 @@ Search.propTypes = {
     usernamePassword: PropTypes.string,
     isSubmitting: PropTypes.bool.isRequired,
     error: PropTypes.object,
+    activeUsername: PropTypes.string,
     handleToggleModal: PropTypes.func,
     handleChangeUsername: PropTypes.func,
     handleChangePassword: PropTypes.func,
-    handlePostCredentials: PropTypes.func    
+    handlePostCredentials: PropTypes.func,
+    handleLogout: PropTypes.func
 };
 
 export default Search;

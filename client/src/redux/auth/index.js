@@ -169,7 +169,9 @@ const reducer = (state = initialState, action) => {
                 },
                 login: {
                     ...state.login,
-                    isSubmitting: false
+                    isSubmitting: false,
+                    username: '',
+                    password: ''
                 }
             };
 
