@@ -37,7 +37,7 @@ router.post('/api/signup', (req, res, next) => {
                 const user = new User({ username, password: hashedPassword });
 
                 user.save()
-                    .then(newUser => res.json({ token: tokenForUser(newUser) }));
+                    .then(newUser => res.json({ username, token: tokenForUser(newUser) }));
             });
         })
         .catch(err => next(err));
