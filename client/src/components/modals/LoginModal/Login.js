@@ -24,13 +24,15 @@ const Login = props => {
                             (Logout)
                         </span>
                     </div> :
-                    <form onSubmit={e => props.handlePostCredentials(
-                        e,
-                        {
-                            username: props.usernameInput,
-                            password: props.passwordInput
-                        }
-                    )}>
+                    <form 
+                        className="auth-form" 
+                        onSubmit={e => props.handlePostCredentials(
+                            e,
+                            {
+                                username: props.usernameInput,
+                                password: props.passwordInput
+                            }
+                        )}>
                         <input 
                             type="text"
                             id="username"
