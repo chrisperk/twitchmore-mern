@@ -9,7 +9,10 @@ import {
     hideSearchResults,
     toggleSearchForm
 } from '../../redux/search';
-import { toggleLoginModal } from '../../redux/auth';
+import { 
+    toggleLoginModal,
+    logout
+} from '../../redux/auth';
 
 const mapStateToProps = state => ({
     searchText: state.search.searchText,
@@ -18,7 +21,8 @@ const mapStateToProps = state => ({
     searchResults: state.search.searchResults,
     cursorPosition: state.search.cursorPosition,
     showSearchForm: state.search.showSearchForm,
-    showSearchResults: state.search.showSearchResults
+    showSearchResults: state.search.showSearchResults,
+    activeUsername: state.auth.activeUser.username
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -51,6 +55,9 @@ const mapDispatchToProps = dispatch => ({
     },
     toggleLoginModal: () => {
         dispatch(toggleLoginModal());
+    },
+    handleLogout: () => {
+        dispatch(logout());
     }
 });
 

@@ -26,6 +26,10 @@
     color: #000;
 }
 
+.mobile-active-user {
+    font-size: 0.6em;
+}
+
 .search-button {
     width: 50px;
     border: 1px solid #888;

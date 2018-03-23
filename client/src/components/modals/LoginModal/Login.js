@@ -17,11 +17,11 @@ const Search = props => {
                 <h1>Login</h1>
                 {props.activeUsername ?
                     <div>
-                        Logged in as {props.activeUsername}
+                        Logged in as {props.activeUsername}&nbsp;
                         <span
                             className="link-button"
                             onClick={() => props.handleLogout()}>
-                            &nbsp;(Logout)
+                            (Logout)
                         </span>
                     </div> :
                     <form onSubmit={e => props.handlePostCredentials(
