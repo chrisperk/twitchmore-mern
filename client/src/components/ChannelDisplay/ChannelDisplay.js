@@ -5,7 +5,9 @@ import './ChannelDisplay.css';
 let content;
 
 const ChannelDisplay = props => {
+
     props.activeChannels.length > 0 ?
+
         content = (
             <div id="mobile-display-space">
                 {props.activeChannels.map(channel => {
@@ -43,9 +45,11 @@ const ChannelDisplay = props => {
                 })}
             </div>
         ) :
+
         content = (
-            <div>Click the search button!</div>
+            <div className="placeholder-space">Click the search button to find streams.</div>
         );
+
     return <div>{content}</div>;
 };
 
