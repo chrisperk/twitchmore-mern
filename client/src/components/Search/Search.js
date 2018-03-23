@@ -25,8 +25,12 @@ const Search = props => {
                                 onClick={() => props.handleLogout()}>
                                 (Logout)
                             </div>
-                        </span> : 
-                        <span onClick={() => props.toggleLoginModal()}>Login</span>}
+                        </span> :
+                        <span className="mobile-auth-buttons"> 
+                            <span onClick={() => props.toggleLoginModal()}>Login</span>
+                            &nbsp;
+                            <span onClick={() => props.toggleSignupModal()}>Sign Up</span>
+                        </span>}
                 </div>
             </nav>
             <div className={props.showSearchForm ? "mobile-search-container visible" : "mobile-search-container" }>
@@ -89,7 +93,8 @@ Search.propTypes = {
     cursorPosition: PropTypes.number,
     showSearchForm: PropTypes.bool.isRequired,
     toggleSearchForm: PropTypes.func.isRequired,
-    toggleLoginModal: PropTypes.func.isRequired
+    toggleLoginModal: PropTypes.func.isRequired,
+    toggleSignupModal: PropTypes.func.isRequired    
     // handleRevealChannelsList: PropTypes.func,
     // hideChannelsList: PropTypes.bool,
     // activeChannels: PropTypes.array

@@ -11,9 +11,9 @@
 }
 
 .nav-buttons {
-    width: 40%;
+    width: 50%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     font-size: 0.8em;
 }
@@ -24,6 +24,15 @@
 
 .nav-buttons > span:hover {
     color: #000;
+}
+
+.mobile-auth-buttons {
+    font-size: 0.8em;
+}
+
+.mobile-auth-buttons > span {
+    border: 1px solid black;
+    padding: 5px 5px;
 }
 
 .mobile-active-user {

@@ -11,6 +11,7 @@ import {
 } from '../../redux/search';
 import { 
     toggleLoginModal,
+    toggleSignupModal,
     logout
 } from '../../redux/auth';
 
@@ -26,36 +27,52 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+
     handleTextChange: text => {
         dispatch(changeSearchText(text));
     },
+
     handleCriteriaChange: criteria => {
         dispatch(changeSearchCriteria(criteria));
     },
+
     handleSearchSubmit: (criteria, cursorPosition, searchText) => {
+
         switch (criteria) {
+
             case 'game':
                 dispatch(fetchStreamsByGame(cursorPosition, searchText));
                 break;
+
             case 'streamer':
                 dispatch(fetchStreamsByStreamer(cursorPosition, searchText));
                 break;
+
             default:
                 return;        
         }
     },
+
     handleSelectChannel: channel => {
         dispatch(selectChannel(channel));
     },
+
     hideSearchResults: () => {
         dispatch(hideSearchResults());
     },
+
     toggleSearchForm: () => {
         dispatch(toggleSearchForm());
     },
+
     toggleLoginModal: () => {
         dispatch(toggleLoginModal());
     },
+
+    toggleSignupModal: () => {
+        dispatch(toggleSignupModal());
+    },
+
     handleLogout: () => {
         dispatch(logout());
     }
