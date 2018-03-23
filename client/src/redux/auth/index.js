@@ -88,10 +88,10 @@ export const logout = () => ({
     type: LOGOUT
 });
 
-export const postSignupCredentials = requestOptions => 
+export const postSignupCredentials = body => 
     dispatch => {
-        dispatch(submitSignupSuccess());
-        return signup(requestOptions)
+        dispatch(submitSignupPending());
+        return signup(body)
             .then(res => dispatch(submitSignupSuccess(res)))
             .catch(err => dispatch(submitSignupError(err)));
     };

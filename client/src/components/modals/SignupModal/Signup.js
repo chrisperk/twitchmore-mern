@@ -37,14 +37,14 @@ const Signup = props => {
                         )}>
                         <input 
                             type="text"
-                            id="username"
+                            id="signup-username"
                             name="username"
                             placeholder="Username" 
                             value={props.usernameInput} 
                             onChange={e => props.handleChangeUsername(e.target.value)} />
                         <input 
                             type="password"
-                            id="password"
+                            id="signup-password"
                             name="password"
                             placeholder="Password" 
                             value={props.passwordInput} 
