@@ -18,31 +18,35 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+
     handleToggleModal: e => {
         e.stopPropagation();
-        console.log(e.target);
+
         const modalWrappers = Array.from(document.querySelectorAll('.modal-wrapper'));
         const closeButtons = Array.from(document.querySelectorAll('.close-button'));
-        console.log(closeButtons.includes(e.target));
         
         if (modalWrappers.includes(e.target) || closeButtons.includes(e.target)) {
-            console.log('dispatch');
             dispatch(toggleLoginModal());
         }
     },
+
     handleChangeUsername: text => {
         dispatch(changeLoginUsername(text));
     },
+
     handleChangePassword: text => {
         dispatch(changeLoginPassword(text));
     },
+
     handlePostCredentials: (event, body) => {
         event.preventDefault();
         dispatch(postLoginCredentials(body));
     },
+
     handleLogout: () => {
         dispatch(logout());
     }
+    
 });
 
 export default connect(
