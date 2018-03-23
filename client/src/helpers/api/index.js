@@ -10,7 +10,14 @@ export const get = (url, options) =>
         .catch(err => console.log(`error: ${err}`));
 
 export const post = (url, body, options) =>
-    fetch(url, { ...options, body })
+    fetch(url, {
+        body: JSON.stringify(body),
+        cache: 'no-cache',
+        headers: {
+            'content-type': 'application/json'
+        },
+        method: 'POST',
+      })
         .then(res => res.json())
         .catch(err => console.log(`error: ${err}`));
     

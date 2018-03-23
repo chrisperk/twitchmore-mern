@@ -34,8 +34,9 @@ const mapDispatchToProps = dispatch => ({
     handleChangePassword: text => {
         dispatch(changeLoginPassword(text));
     },
-    handlePostCredentials: requestOptions => {
-        dispatch(postLoginCredentials(requestOptions));
+    handlePostCredentials: (event, body) => {
+        event.preventDefault();
+        dispatch(postLoginCredentials(body));
     }
 });
 

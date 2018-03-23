@@ -48,10 +48,10 @@ export const submitLoginError = error => ({
     payload: error
 });
 
-export const postLoginCredentials = requestOptions => 
+export const postLoginCredentials = body => 
     dispatch => {
-        dispatch(submitLoginSuccess());
-        return login(requestOptions)
+        dispatch(submitLoginPending());
+        return login(body)
             .then(res => dispatch(submitLoginSuccess(res)))
             .catch(err => dispatch(submitLoginError(err)));
     };

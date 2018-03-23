@@ -19,7 +19,13 @@ const Search = props => {
                     <div>
                         Logged in as {props.activeUser}
                     </div> :
-                    <form onSubmit={() => props.handlePostCredentials()}>
+                    <form onSubmit={e => props.handlePostCredentials(
+                        e,
+                        {
+                            username: props.usernameInput,
+                            password: props.passwordInput
+                        }
+                    )}>
                         <input 
                             type="text"
                             id="username"
