@@ -4,5 +4,4 @@ export const login = body =>
     post('/api/login', body, null);
 
 export const signup = body =>
-    post('/api/signup', body, null)
-        .then(login(body));
+    post('/api/signup', body, null);

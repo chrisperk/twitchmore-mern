@@ -227,7 +227,13 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 signup: {
                     ...state.signup,
-                    isSubmitting: false
+                    isSubmitting: false,
+                    username: '',
+                    password: ''
+                },
+                activeUser: {
+                    username: action.payload.username,
+                    token: action.payload.token
                 }
             };
 
