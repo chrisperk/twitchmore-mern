@@ -13,9 +13,15 @@ const userSchema = new Schema({
         required: true
     },
 
-    streams: [
+    activeChannels: [
         {
-            streamId: String
+            channelName: String
+        }
+    ],
+
+    favoriteChannels: [
+        {
+            channelName: String
         }
     ]
 });
