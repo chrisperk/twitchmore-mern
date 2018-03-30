@@ -5,7 +5,8 @@ import {
 } from '../../redux/activeChannels';
 
 const mapStateToProps = state => ({
-    activeChannels: state.activeChannels.items
+    activeChannels: state.activeChannels.items,
+    isSearchShown: state.search.showSearchForm
 });
 
 const mapDispatchToProps = dispatch => ({

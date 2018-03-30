@@ -6,7 +6,7 @@ let content;
 
 const ChannelDisplay = props => {
 
-    props.activeChannels.length > 0 ?
+    props.activeChannels.length > 0 || props.isSearchShown ?
 
         content = (
             <div id="mobile-display-space">
@@ -55,6 +55,7 @@ const ChannelDisplay = props => {
 
 ChannelDisplay.propType = {
     activeChannels: PropTypes.array.isRequired,
+    isSearchShown: PropTypes.bool.isRequired,    
     unselectChannel: PropTypes.func.isRequired
 }
 
