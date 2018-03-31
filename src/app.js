@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import AuthRouter from './routes/AuthRoutes';
+import ChannelRouter from './routes/ChannelRoutes';
 import './services/passport';
 import path from 'path';
 import envVars from './config';
@@ -21,6 +22,7 @@ const authStrategy = passport.authenticate('authStrategy', { session: false });
 
 app.use(bodyParser.json());
 app.use(AuthRouter);
+app.use(ChannelRouter);
 
 app.get('/api/secret', authStrategy, (req, res) => res.send(`The current user is ${req.user.username}`));
 

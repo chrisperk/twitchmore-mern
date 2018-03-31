@@ -13,17 +13,9 @@ const userSchema = new Schema({
         required: true
     },
 
-    activeChannels: [
-        {
-            channelName: String
-        }
-    ],
+    activeChannels: [String],
 
-    favoriteChannels: [
-        {
-            channelName: String
-        }
-    ]
+    favoriteChannels: [String]
 });
 
 module.exports = mongoose.model('User', userSchema);

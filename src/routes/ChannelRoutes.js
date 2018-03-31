@@ -10,12 +10,20 @@ const router = express.Router();
 
 router.post('/api/saveActiveStream', (req, res, next) => {
     const { username, channelName } = req.body;
+    console.log(channelName);
 
-    User.findOne( { username }).exec()
+    User.findOne({ username }).exec()
         .then(existingUser => {
+            console.log(existingUser);
+            const oldId = existingUser._id;
+            console.log(oldId);
             existingUser.activeChannels.push(channelName);
-            existingUser.update()
-                .then(newUser => res.json({ username, activeChannels }));
+            console.log(existingUser);
+            existingUser.save()
+                .then(newUser => {
+                    console.log(newUser);
+                    res.json({ username, activeChannels: newUser.activeChannels })
+                });
         })
         .catch(err => next(err));
 });
