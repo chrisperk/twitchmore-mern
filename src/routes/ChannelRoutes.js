@@ -10,20 +10,14 @@ const router = express.Router();
 
 router.post('/api/saveActiveStream', (req, res, next) => {
     const { username, channelName } = req.body;
-    console.log(channelName);
 
     User.findOne({ username }).exec()
         .then(existingUser => {
-            console.log(existingUser);
-            const oldId = existingUser._id;
-            console.log(oldId);
             existingUser.activeChannels.push(channelName);
-            console.log(existingUser);
             existingUser.save()
-                .then(newUser => {
-                    console.log(newUser);
-                    res.json({ username, activeChannels: newUser.activeChannels })
-                });
+                .then(updatedUser => 
+                    res.json({ username, activeChannels: updatedUser.activeChannels })
+                );
         })
         .catch(err => next(err));
 });
@@ -34,8 +28,10 @@ router.post('/api/saveFavoriteStream', (req, res, next) => {
     User.findOne( { username }).exec()
         .then(existingUser => {
             existingUser.favoriteChannels.push(channelName);
-            existingUser.update()
-                .then(newUser => res.json({ username, favoriteChannels }));
+            existingUser.save()
+                .then(updatedUser => 
+                    res.json({ username, favoriteChannels: updatedUser.favoriteChannels }))
+                ;
         })
         .catch(err => next(err));
 });
