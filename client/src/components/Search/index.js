@@ -54,8 +54,8 @@ const mapDispatchToProps = dispatch => ({
         }
     },
 
-    handleSelectChannel: body => {
-        dispatch(postActiveChannel(body));
+    handleSelectChannel: (channel, username) => {
+        dispatch(postActiveChannel(username, channel));
     },
 
     hideSearchResults: () => {

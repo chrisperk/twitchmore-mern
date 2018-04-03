@@ -129,12 +129,12 @@ const selectChannelError = error => ({
     payload: error
 });
 
-export const postActiveChannel = body => (
+export const postActiveChannel = (username, channel) => (
     dispatch => {
-        dispatch(selectChannel(body.channelName));
-        return saveActiveChannel(body)
+        dispatch(selectChannel(channel));
+        return saveActiveChannel({ username, channelName: channel.channel ? channel.channel.name : channel.name })
             .then(res => console.log(res))
-            .cach(err => dispatch(selectChannelError(err)));
+            .catch(err => dispatch(selectChannelError(err)));
     }
 );
 
