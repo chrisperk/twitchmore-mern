@@ -8,7 +8,7 @@ import envVars from '../config';
 
 const router = express.Router();
 
-router.post('/api/saveActiveStream', (req, res, next) => {
+router.post('/api/saveActiveChannel', (req, res, next) => {
     const { username, channelName } = req.body;
 
     User.findOne({ username }).exec()
@@ -22,7 +22,7 @@ router.post('/api/saveActiveStream', (req, res, next) => {
         .catch(err => next(err));
 });
 
-router.post('/api/saveFavoriteStream', (req, res, next) => {
+router.post('/api/saveFavoriteChannel', (req, res, next) => {
     const { username, channelName } = req.body;
 
     User.findOne( { username }).exec()
