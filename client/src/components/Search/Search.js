@@ -65,7 +65,7 @@ const Search = props => {
                                 <div 
                                     key={channel._id}
                                     className="search-result"
-                                    onClick={event => props.handleSelectChannel(channel, event)}>  
+                                    onClick={event => props.handleSelectChannel({username: props.activeUsername, channelName: channel.channel ? channel.channel.name : channel.name}, event)}>  
                                     <span>{channel.channel ? channel.channel.name : channel.name}</span>
                                     <span>{channel.game}</span>
                                 </div>
@@ -84,6 +84,7 @@ Search.propTypes = {
     searchCriteria: PropTypes.string.isRequired,
     searchText: PropTypes.string.isRequired,
     searchResults: PropTypes.array,
+    activeUsername: PropTypes.string,
     // lastSearchCriteria: PropTypes.string,
     handleCriteriaChange: PropTypes.func.isRequired,
     handleTextChange: PropTypes.func.isRequired,

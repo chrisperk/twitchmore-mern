@@ -1,4 +1,6 @@
 import { searchByGame, searchByStreamer } from '../../helpers/api/search';
+import { saveActiveChannel, saveFavoriteChannel } from '../../helpers/api/channels';
+
 
 // Actions
 
@@ -12,6 +14,7 @@ const GET_PREV_SEARCHRESULTS = 'GET_PREV_SEARCHRESULTS';
 const GET_NEXT_SEARCHRESULTS = 'GET_NEXT_SEARCHRESULTS';
 export const SELECT_CHANNEL = 'SELECT_CHANNEL';
 const TOGGLE_SEARCHFORM = 'TOGGLE_SEARCHFORM';
+const SELECT_CHANNEL_ERROR = 'SELECT_CHANNEL_ERROR';
 
 // Action Creators
 
@@ -120,6 +123,20 @@ export const selectChannel = stream => ({
     type: SELECT_CHANNEL,
     payload: stream
 });
+
+const selectChannelError = error => ({
+    type: SELECT_CHANNEL_ERROR,
+    payload: error
+});
+
+export const postActiveChannel = body => (
+    dispatch => {
+        dispatch(selectChannel(body.channelName));
+        return saveActiveChannel(body)
+            .then(res => console.log(res))
+            .cach(err => dispatch(selectChannelError(err)));
+    }
+);
 
 export const toggleSearchForm = () => ({
     type: TOGGLE_SEARCHFORM

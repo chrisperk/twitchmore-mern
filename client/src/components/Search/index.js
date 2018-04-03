@@ -7,7 +7,8 @@ import {
     fetchStreamsByStreamer,
     selectChannel,
     hideSearchResults,
-    toggleSearchForm
+    toggleSearchForm,
+    postActiveChannel
 } from '../../redux/search';
 import { 
     toggleLoginModal,
@@ -53,8 +54,8 @@ const mapDispatchToProps = dispatch => ({
         }
     },
 
-    handleSelectChannel: channel => {
-        dispatch(selectChannel(channel));
+    handleSelectChannel: body => {
+        dispatch(postActiveChannel(body));
     },
 
     hideSearchResults: () => {
